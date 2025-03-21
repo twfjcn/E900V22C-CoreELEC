@@ -8,6 +8,8 @@ target_img_name="${target_img_prefix}-E900V22C-$(date +%Y.%m.%d)"
 mount_point="target"
 common_files="common-files"
 system_root="SYSTEM-root"
+
+autostart_path="${system_root}/usr/bin"
 modules_load_path="${system_root}/usr/lib/modules-load.d"
 systemd_path="${system_root}/usr/lib/systemd/system"
 libreelec_path="${system_root}/usr/lib/libreelec"
@@ -46,6 +48,10 @@ echo "Copying fs-resize script"
 sudo cp ${common_files}/fs-resize ${libreelec_path}/fs-resize
 sudo chown root:root ${libreelec_path}/fs-resize
 sudo chmod 0775 ${libreelec_path}/fs-resize
+
+echo "Copying autostart script"
+sudo cp ${common_files}/autostart.sh ${autostart_path}/autostart.sh
+sudo chmod 0775 ${autostart_path}/autostart.sh
 
 echo "Copying rc_keymap files"
 sudo cp ${common_files}/rc_maps.cfg ${config_path}/rc_maps.cfg
