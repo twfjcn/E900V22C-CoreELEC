@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  REPO_URL: https://github.com/nantayo/E900V22C-CoreELEC
+  REPO_URL: https://github.com/twfjcn/E900V22C-CoreELEC
   TZ: Asia/Shanghai
 
 jobs:
