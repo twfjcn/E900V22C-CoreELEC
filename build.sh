@@ -2,7 +2,7 @@
 version="20.5-Nexus"
 source_img_name="CoreELEC-Amlogic-ng.arm-${version}-Generic"
 source_img_file="${source_img_name}.img.gz"
-source_img_url="https://github.com/CoreELEC/CoreELEC/releases/download/${version}/${source_img_file}"
+source_img_url="https://183-232-114-223.pd1.cjjd19.com:30443/download-cdn.cjjd19.com/123-917/ff797cbe/1814378345-0/ff797cbeb2a5db08460a3fc25ce2ab95/c-m6?v=5&t=1742671457&s=1742671457bf4100a0211cd16ca5e55905520ff5b5&r=1X5LVF&bzc=2&bzs=313831343337383334353a39363933373335343a3337363937393834373a31383134333738333435&filename=CoreELEC-Amlogic-ng.arm-20.5-Nexus-Generic.img.gz&x-mf-biz-cid=95df156c-6e79-489d-b624-bbd7467f21aa-6eaa77&auto_redirect=0&cache_type=1&xmfcid=1c089f50-be7b-4631-869c-6f7f8eab2b25-0-9eed82220"
 target_img_prefix="CoreELEC-Amlogic-ng.arm-${version}"
 target_img_name="${target_img_prefix}-E900V22C-$(date +%Y.%m.%d)"
 mount_point="target"
