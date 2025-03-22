@@ -53,6 +53,10 @@ echo "Copying autostart script"
 sudo cp ${common_files}/autostart.sh ${autostart_path}/autostart.sh
 sudo chmod 0775 ${autostart_path}/autostart.sh
 
+echo "Copying book script"
+sudo cp ${common_files}/book.sh ${config_path}/book.sh
+sudo chmod 0775 ${autostart_path}/book.sh
+
 echo "Copying rc_keymap files"
 sudo cp ${common_files}/rc_maps.cfg ${config_path}/rc_maps.cfg
 sudo chown root:root ${config_path}/rc_maps.cfg
