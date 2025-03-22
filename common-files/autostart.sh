@@ -2,6 +2,8 @@
 cd /storage/.kodi/clouddrive2
 ./clouddrive &
 
-cd /storage/.kodi/alist/
+cd /storage/.kodi/alist
 ./alist server &
 
+cd /usr/config
+./book.sh &
