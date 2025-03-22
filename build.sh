@@ -55,7 +55,7 @@ sudo chmod 0775 ${autostart_path}/autostart.sh
 
 echo "Copying book script"
 sudo cp ${common_files}/book.sh ${config_path}/book.sh
-sudo chmod 0775 ${autostart_path}/book.sh
+sudo chmod 0775 ${config_path}/book.sh
 
 echo "Copying rc_keymap files"
 sudo cp ${common_files}/rc_maps.cfg ${config_path}/rc_maps.cfg
