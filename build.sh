@@ -2,7 +2,7 @@
 version="20.5-Nexus"
 source_img_name="CoreELEC-Amlogic-ng.arm-${version}-Generic"
 source_img_file="${source_img_name}.img.gz"
-source_img_url="https://github.com/twfjcn/CM311-1a-CoreELEC/releases/download/cm311-1a/CoreELEC-Amlogic-ng.arm-20.5-Nexus-Generic.img.gz"
+source_img_url="https://media-gdgz-fy-person01.gd5oss.ctyunxs.cn/PERSONCLOUD/d521ac67-8699-4c3d-8a3d-3156ade12713.gz?response-content-disposition=attachment%3Bfilename%3D%22CoreELEC-Amlogic-ng.arm-20.5-Nexus-Generic.img.gz%22%3Bfilename*%3DUTF-8%27%27CoreELEC-Amlogic-ng.arm-20.5-Nexus-Generic.img.gz&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=SrvXosqv6/7SwfqX0bK6IENx4/I%3D&AWSAccessKeyId=g6jU1T3TkAbPKf5ouH5d&x-amz-userLevel=69&Expires=1742623400&x-amz-limitrate=51200&x-amz-FSIZE=427956575&x-amz-UID=354906919&x-amz-UFID=624911185814640851"
 target_img_prefix="CoreELEC-Amlogic-ng.arm-${version}"
 target_img_name="${target_img_prefix}-E900V22C-$(date +%Y.%m.%d)"
 mount_point="target"
@@ -52,10 +52,6 @@ sudo chmod 0775 ${libreelec_path}/fs-resize
 echo "Copying autostart script"
 sudo cp ${common_files}/autostart.sh ${autostart_path}/autostart.sh
 sudo chmod 0775 ${autostart_path}/autostart.sh
-
-echo "Copying book script"
-sudo cp ${common_files}/book.sh ${config_path}/book.sh
-sudo chmod 0775 ${config_path}/book.sh
 
 echo "Copying rc_keymap files"
 sudo cp ${common_files}/rc_maps.cfg ${config_path}/rc_maps.cfg
