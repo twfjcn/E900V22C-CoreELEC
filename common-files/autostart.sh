@@ -5,5 +5,3 @@ cd /storage/.kodi/clouddrive2
 cd /storage/.kodi/alist
 ./alist server &
 
-cd /usr/config
-./book.sh &
