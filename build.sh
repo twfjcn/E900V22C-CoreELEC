@@ -1,4 +1,4 @@
-#! /bin/sh
+#!/bin/sh
 version="20.5-Nexus"
 source_img_name="CoreELEC-Amlogic-ng.arm-${version}-Generic"
 source_img_file="${source_img_name}.img.gz"
@@ -20,9 +20,9 @@ kodi_userdata="${mount_point}/.kodi/userdata"
 
 echo "Welcome to build CoreELEC for Skyworth E900V22C!"
 echo "Downloading CoreELEC-${version} generic image"
-wget ${source_img_url} -O ${source_img_file} | exit 1
+wget ${source_img_url} -O ${source_img_file} || exit 1
 echo "Decompressing CoreELEC image"
-gzip -d ${source_img_file} | exit 1
+gzip -d ${source_img_file} || exit 1
 
 echo "Creating mount point"
 mkdir ${mount_point}
@@ -61,10 +61,33 @@ sudo cp -r ${kodi} ${system_root}/usr/share
 echo "Copying bin file path"
 sudo cp -r ${bin} ${system_root}/usr/
 
-rm -rf ${system_root}/usr/share/kodi/.kodi.zip
+# 删除文件前检查文件是否存在
+if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
+    sudo rm ${system_root}/usr/share/kodi/.kodi.zip
+    if [ $? -ne 0 ]; then
+        echo "删除 /usr/share/kodi/.kodi.zip 文件失败"
+        exit 1
+    fi
+fi
 
-wget -O.kodi.zip "https://media-gdgz-fy-person01.gd5oss.ctyunxs.cn/PERSONCLOUD/83dfd881-9995-4966-ab50-ab35c259dd0a.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=Kv7twLawWaymUERm0s%2Bn9YiN0nY%3D&AWSAccessKeyId=g6jU1T3TkAbPKf5ouH5d&x-amz-userLevel=33&Expires=1743270341&x-amz-limitrate=51200&x-amz-FSIZE=163908999&x-amz-UID=354906919&x-amz-UFID=925461187036609791"
-mv.kodi.zip ${system_root}/usr/share/kodi/
+echo "Downloading.kodi.zip file"
+wget -O.kodi.zip "https://media-gdgz-fy-person01.gd5oss.ctyunxs.cn/PERSONCLOUD/83dfd881-9995-4966-ab50-ab35c259dd0a.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=Oio5bAnFV%2BwDRUgOQnaxOoBdnic%3D&AWSAccessKeyId=g6jU1T3TkAbPKf5ouH5d&x-amz-userLevel=33&Expires=1743271400&x-amz-limitrate=51200&x-amz-FSIZE=163908999&x-amz-UID=354906919&x-amz-UFID=925461187036609791"
+if [ $? -ne 0 ]; then
+    echo "下载.kodi.zip 文件失败"
+    exit 1
+fi
+
+# 移动文件前检查文件是否存在
+if [ -f.kodi.zip ]; then
+    sudo mv.kodi.zip ${system_root}/usr/share/kodi/
+    if [ $? -ne 0 ]; then
+        echo "移动.kodi.zip 文件失败"
+        exit 1
+    fi
+else
+    echo ".kodi.zip 文件未成功下载，无法移动"
+    exit 1
+fi
 
 echo "Copying rc_keymap files"
 sudo cp ${common_files}/rc_maps.cfg ${config_path}/rc_maps.cfg
@@ -114,4 +137,3 @@ mv ${source_img_name}.img ${target_img_name}.img
 echo "Compressing CoreELEC image"
 gzip ${target_img_name}.img
 sha256sum ${target_img_name}.img.gz > ${target_img_name}.img.gz.sha256
-
