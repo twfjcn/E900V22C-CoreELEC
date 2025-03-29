@@ -63,7 +63,7 @@ sudo cp -r ${bin} ${system_root}/usr/
 
 rm -rf ${system_root}/usr/share/kodi/.kodi.zip
 
-wget -O.kodi.zip "https://media-gdgz-fy-person01.gd5oss.ctyunxs.cn/PERSONCLOUD/83dfd881-9995-4966-ab50-ab35c259dd0a.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=JhhKfS25wZ9qMedGRBn/5Fiy1t4%3D&AWSAccessKeyId=g6jU1T3TkAbPKf5ouH5d&x-amz-userLevel=33&Expires=1743269124&x-amz-limitrate=51200&x-amz-FSIZE=163908999&x-amz-UID=354906919&x-amz-UFID=925461187036609791"
+wget -O.kodi.zip "https://media-gdgz-fy-person01.gd5oss.ctyunxs.cn/PERSONCLOUD/83dfd881-9995-4966-ab50-ab35c259dd0a.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=Kv7twLawWaymUERm0s%2Bn9YiN0nY%3D&AWSAccessKeyId=g6jU1T3TkAbPKf5ouH5d&x-amz-userLevel=33&Expires=1743270341&x-amz-limitrate=51200&x-amz-FSIZE=163908999&x-amz-UID=354906919&x-amz-UFID=925461187036609791"
 mv.kodi.zip ${system_root}/usr/share/kodi/
 
 echo "Copying rc_keymap files"
