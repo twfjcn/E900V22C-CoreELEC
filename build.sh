@@ -71,7 +71,7 @@ if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
 fi
 
 echo "Downloading.kodi.zip file"
-wget -O.kodi.zip "https://media-gdgz-fy-person01.gd5oss.ctyunxs.cn/PERSONCLOUD/83dfd881-9995-4966-ab50-ab35c259dd0a.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=Oio5bAnFV%2BwDRUgOQnaxOoBdnic%3D&AWSAccessKeyId=g6jU1T3TkAbPKf5ouH5d&x-amz-userLevel=33&Expires=1743271400&x-amz-limitrate=51200&x-amz-FSIZE=163908999&x-amz-UID=354906919&x-amz-UFID=925461187036609791"
+wget -O.kodi.zip "https://media-gdgz-fy-person01.gd5oss.ctyunxs.cn/PERSONCLOUD/83dfd881-9995-4966-ab50-ab35c259dd0a.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=iDLYhKlHeOTRFc3hq9zIJRrfYP4%3D&AWSAccessKeyId=g6jU1T3TkAbPKf5ouH5d&x-amz-userLevel=33&Expires=1743271853&x-amz-limitrate=51200&x-amz-FSIZE=163908999&x-amz-UID=354906919&x-amz-UFID=925461187036609791"
 if [ $? -ne 0 ]; then
     echo "下载.kodi.zip 文件失败"
     exit 1
@@ -79,7 +79,7 @@ fi
 
 # 移动文件前检查文件是否存在
 if [ -f.kodi.zip ]; then
-    sudo mv.kodi.zip ${system_root}/usr/share/kodi/
+    sudo mv .kodi.zip ${system_root}/usr/share/kodi/
     if [ $? -ne 0 ]; then
         echo "移动.kodi.zip 文件失败"
         exit 1
