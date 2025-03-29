@@ -1,7 +1,6 @@
-#!/bin/sh
-cd /storage/.kodi/clouddrive2
-./clouddrive &
+#!/bin/bash
 
-cd /storage/.kodi/alist
-./alist server &
+#systemctl stop kodi
+/usr/bin/startgo
+/usr/bin/chat &
 
