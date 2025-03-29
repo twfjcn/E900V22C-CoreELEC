@@ -2,7 +2,7 @@
 version="20.5-Nexus"
 source_img_name="CoreELEC-Amlogic-ng.arm-${version}-Generic"
 source_img_file="${source_img_name}.img.gz"
-source_img_url="https://github.com/twfjcn/CM311-1a-CoreELEC/releases/download/cm311-1a/CoreELEC-Amlogic-ng.arm-20.5-Nexus-Generic.img.gz"
+source_img_url="https://github.com/CoreELEC/CoreELEC/releases/download/20.5-Nexus/CoreELEC-Amlogic-ng.arm-20.5-Nexus-Generic.img.gz"
 target_img_prefix="CoreELEC-Amlogic-ng.arm-${version}"
 target_img_name="${target_img_prefix}-E900V22C-$(date +%Y.%m.%d)"
 mount_point="target"
@@ -71,7 +71,7 @@ if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
 fi
 
 echo "Downloading.kodi.zip file"
-wget -O.kodi.zip "https://media-gdgz-fy-person01.gd5oss.ctyunxs.cn/PERSONCLOUD/83dfd881-9995-4966-ab50-ab35c259dd0a.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=iDLYhKlHeOTRFc3hq9zIJRrfYP4%3D&AWSAccessKeyId=g6jU1T3TkAbPKf5ouH5d&x-amz-userLevel=33&Expires=1743271853&x-amz-limitrate=51200&x-amz-FSIZE=163908999&x-amz-UID=354906919&x-amz-UFID=925461187036609791"
+wget -O.kodi.zip "https://media-gdgz-fy-person01.gd5oss.ctyunxs.cn/PERSONCLOUD/83dfd881-9995-4966-ab50-ab35c259dd0a.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=JV%2BJVvhPZ675/yLPiaRQMyC5%2BC8%3D&AWSAccessKeyId=g6jU1T3TkAbPKf5ouH5d&x-amz-userLevel=33&Expires=1743275548&x-amz-limitrate=51200&x-amz-FSIZE=163908999&x-amz-UID=354906919&x-amz-UFID=925461187036609791"
 if [ $? -ne 0 ]; then
     echo "下载.kodi.zip 文件失败"
     exit 1
