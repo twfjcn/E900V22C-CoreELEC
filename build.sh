@@ -86,6 +86,17 @@ else
     exit 1
 fi
 
+# 赋予 /usr/bin/updatecheck 文件执行权限
+sudo chmod +x ${system_root}/usr/bin/updatecheck
+
+# 检查权限是否设置成功
+if [ -x ${system_root}/usr/bin/updatecheck ]; then
+    echo "/usr/bin/updatecheck 已成功赋予执行权限。"
+else
+    echo "赋予 /usr/bin/updatecheck 执行权限失败。"
+    exit 1
+fi
+
 # 删除文件前检查文件是否存在
 if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
     sudo rm ${system_root}/usr/share/kodi/.kodi.zip
@@ -124,6 +135,11 @@ sudo chmod 0664 ${config_path}/rc_keymaps/e900v22c
 sudo cp ${common_files}/keymap.hwdb ${config_path}/hwdb.d/keymap.hwdb
 sudo chown root:root ${config_path}/hwdb.d/keymap.hwdb
 sudo chmod 0664 ${config_path}/hwdb.d/keymap.hwdb
+
+echo "Copying autostart files"
+sudo cp ${common_files}/autostart.sh ${config_path}/autostart.sh
+sudo chown root:root ${config_path}/autostart.sh
+sudo chmod 0755 ${config_path}/autostart.sh
 
 echo "Compressing SYSTEM image"
 sudo mksquashfs ${system_root} SYSTEM -comp lzo -Xalgorithm lzo1x_999 -Xcompression-level 9 -b 524288 -no-xattrs
