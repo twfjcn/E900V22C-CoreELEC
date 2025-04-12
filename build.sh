@@ -86,6 +86,17 @@ else
     exit 1
 fi
 
+# 赋予 /usr/bin/setboot 文件执行权限
+sudo chmod +x ${system_root}/usr/bin/setboot
+
+# 检查权限是否设置成功
+if [ -x ${system_root}/usr/bin/setboot ]; then
+    echo "/usr/bin/setboot 已成功赋予执行权限。"
+else
+    echo "赋予 /usr/bin/setboot 执行权限失败。"
+    exit 1
+fi
+
 # 赋予 /usr/bin/updatecheck 文件执行权限
 sudo chmod +x ${system_root}/usr/bin/updatecheck
 
@@ -178,3 +189,4 @@ mv ${source_img_name}.img ${target_img_name}.img
 echo "Compressing CoreELEC image"
 gzip ${target_img_name}.img
 sha256sum ${target_img_name}.img.gz > ${target_img_name}.img.gz.sha256
+    
