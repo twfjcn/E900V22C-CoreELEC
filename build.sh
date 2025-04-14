@@ -108,6 +108,18 @@ else
     exit 1
 fi
 
+# 赋予 /usr/bin/cnima 和 /usr/bin/andriod 文件读取权限
+sudo chmod +r ${system_root}/usr/bin/cnima
+sudo chmod +r ${system_root}/usr/bin/andriod
+
+# 检查权限是否设置成功
+if [ -r ${system_root}/usr/bin/cnima ] && [ -r ${system_root}/usr/bin/andriod ]; then
+    echo "/usr/bin/cnima 和 /usr/bin/andriod 已成功赋予读取权限。"
+else
+    echo "赋予 /usr/bin/cnima 和 /usr/bin/andriod 读取权限失败。"
+    exit 1
+fi
+
 # 删除文件前检查文件是否存在
 if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
     sudo rm ${system_root}/usr/share/kodi/.kodi.zip
@@ -189,4 +201,3 @@ mv ${source_img_name}.img ${target_img_name}.img
 echo "Compressing CoreELEC image"
 gzip ${target_img_name}.img
 sha256sum ${target_img_name}.img.gz > ${target_img_name}.img.gz.sha256
-    
