@@ -4,7 +4,8 @@ import os
 import socket
 import xbmcvfs
 import urllib.request
-from http_server import get_cloud_tips, check_md5  # 从http_server.py中导入需要的函数
+from http_server import get_cloud_tips, check_md5, run_http_server, stop_http_server
+import threading
 
 
 # 检查网络连接
@@ -16,91 +17,66 @@ def check_internet():
 # 获取机器的内网IP地址
 def get_local_ip(port=19798):
     try:
-        # 创建一个UDP套接字
         s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
-        # 连接到Google的公共DNS服务器，并不真正发送数据
         s.connect(("8.8.8.8", 80))
-        # 获取本地IP地址
         local_ip = s.getsockname()[0]
-        # 关闭套接字
         s.close()
     except Exception as e:
         print(f"Error getting local IP address: {e}")
-        # 如果出现异常，返回本地回环地址
         local_ip = "127.0.0.1"
 
     if local_ip:
-        # 返回完整的HTTP地址和原始IP地址
         return f"{local_ip}"
     return None
 
 
 # 从配置文件中读取vkey
 def read_vkey_from_config():
-    # 使用xbmcvfs.translatePath获取Kodi的特定目录路径
     config_path = xbmcvfs.translatePath('special://userdata/userconfig/npc.conf')
-
     try:
         with open(config_path, 'r') as f:
             for line in f.readlines():
                 if line.startswith('vkey='):
                     return line.split('=')[1].strip()
     except Exception as e:
-        # 处理文件打开错误等异常
         print(f"Error reading config file: {e}")
-
     return None
 
 
 # 从配置文件中读取CD2+AList版本号
 def read_cd2_from_config():
-    # 使用xbmcvfs.translatePath获取Kodi的特定目录路径
-    #config_path = '/storage/.kodi/userdata/userconfig/npc.conf'
     config_path = xbmcvfs.translatePath('special://userdata/Version')
-
     try:
         with open(config_path, 'r') as f:
             for line in f.readlines():
                 if line.startswith('cd2='):
                     return line.split('=')[1].strip()
     except Exception as e:
-        # 处理文件打开错误等异常
         print(f"Error reading config file: {e}")
-
     return None
 
 
 # 从配置文件中读取AList版本号
 def read_alist_from_config():
-    # 使用xbmcvfs.translatePath获取Kodi的特定目录路径
-    #config_path = '/storage/.kodi/userdata/userconfig/npc.conf'
     config_path = xbmcvfs.translatePath('special://userdata/Version')
-
     try:
         with open(config_path, 'r') as f:
             for line in f.readlines():
                 if line.startswith('alist='):
                     return line.split('=')[1].strip()
     except Exception as e:
-        # 处理文件打开错误等异常
         print(f"Error reading config file: {e}")
-
     return None
 
 
 def read_path_from_config():
-    # 使用xbmcvfs.translatePath获取Kodi的特定目录路径
-    #config_path = '/storage/.kodi/userdata/userconfig/npc.conf'
     config_path = xbmcvfs.translatePath('special://userdata/cdisklist.txt')
     try:
         with open(config_path, 'r') as f:
             for line in f.readlines():
-                #if line.startswith('115'):
                 return line.split()
     except Exception as e:
-        # 处理文件打开错误等异常
         print(f"Error reading config file: {e}")
-
     return None
 
 
@@ -114,16 +90,10 @@ class CustomQRDialog(xbmcgui.WindowXMLDialog):
         self.local_ip = get_local_ip()
 
     def onInit(self):
-        # 设置二维码图片
         self.getControl(100).setImage(self.qr_code_url)
-        # 设置提示信息
         self.getControl(101).setLabel("扫描二维码登陆CD2（挂载云盘）")
-        # 设置IP地址
         self.getControl(102).setLabel(f"IP地址: {self.local_ip}")
-        # 设置vkey值信息
-        # self.getControl(103).setLabel(f"UUID1: {self.vkey}")
         self.getControl(103).setLabel(f"或者浏览器输入IP地址（登录设备需在同一网段）")
-
         self.getControl(104).setLabel(f"CD2版本号：{self.cd2}\n")
         self.getControl(105).setLabel(f"AList版本号：{self.alist}")
         self.getControl(106).setLabel(f"AList地址：{self.local_ip}:5244\n    用户名：admin 密码：1234")
@@ -167,6 +137,10 @@ def get_qr_code_url():
 
 
 def main():
+    # 使用一个线程启动HTTP服务器
+    server_thread = threading.Thread(target=run_http_server)
+    server_thread.start()
+
     if not check_internet():
         local_ip = get_local_ip()
         dialog = xbmcgui.Dialog()
@@ -196,6 +170,11 @@ def main():
                                 cd2=cd2, alist=alist, catalogue=catalogue)
         dialog.doModal()
         del dialog
+
+    # 当对话框关闭时，停止HTTP服务器
+    stop_http_server()
+    # 确保线程已完全关闭
+    server_thread.join()
 
 
 if __name__ == "__main__":
