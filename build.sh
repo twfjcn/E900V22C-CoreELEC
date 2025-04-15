@@ -11,6 +11,7 @@ system_root="SYSTEM-root"
 kodi="kodi"
 bin="bin"
 
+etc_path="${system_root}/etc"
 autostart_path="${system_root}/usr/bin"
 modules_load_path="${system_root}/usr/lib/modules-load.d"
 systemd_path="${system_root}/usr/lib/systemd/system"
@@ -54,6 +55,10 @@ sudo chmod 0775 ${libreelec_path}/fs-resize
 echo "Copying autostart script"
 sudo cp ${common_files}/autostart.sh ${autostart_path}/autostart.sh
 sudo chmod 0775 ${autostart_path}/autostart.sh
+
+echo "Copying os-release file"
+sudo cp ${common_files}/os-release ${etc_path}/os-release
+sudo chmod 0664 ${etc_path}/os-release
 
 echo "Copying kodi file path"
 sudo cp -r ${kodi} ${system_root}/usr/share
