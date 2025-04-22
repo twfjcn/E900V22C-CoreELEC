@@ -6,11 +6,11 @@
     <extension point="xbmc.python.pluginsource" library="main.py">
         <provides>video</provides>
     </extension>
-    <assets>
-      <icon>icon.png</icon>
-    </assets>
     <extension point="xbmc.addon.metadata">
         <summary lang="zh_CN">快速进入云盘挂载</summary>
         <platform>all</platform>
+  <assets>
+                 <icon>icon.png</icon>
+  </assets>
     </extension>
 </addon>
