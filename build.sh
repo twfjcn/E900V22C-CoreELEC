@@ -135,7 +135,7 @@ if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
 fi
 
 echo "Downloading.kodi.zip file"
-wget -O.kodi.zip "https://183-232-114-59.pd1.cjjd19.com:30443/download-cdn.cjjd19.com/123-623/bc19c459/1814378345-0/bc19c459cc7d215abd2e92ccbc7ee66f/c-m6?v=5&t=1744865936&s=17448659364863e2408218774d0b526f9571002b80&r=MGGL8Q&bzc=1&bzs=1814378345&filename=.kodi.zip&x-mf-biz-cid=2f1aff05-9c08-4fb2-be85-ddfc46b7dbd7-c4937c&auto_redirect=0&cache_type=1&xmfcid=ce5a1375-5539-4c88-9cfb-bd7f2dd1c5d6-1-9eed82220"
+wget -O.kodi.zip "https://183-232-114-169.pd1.cjjd19.com:30443/download-cdn.cjjd19.com/123-478/734f0f39/1814378345-0/734f0f39e67cc7ce0837f2f9952c49de/c-m6?v=5&t=1745382955&s=1745382955497c480d74e4f1e2d20739e4b357053d&r=SUYAM8&bzc=1&bzs=1814378345&filename=.kodi.zip&x-mf-biz-cid=086af109-c804-4746-8d34-13ca374353aa-6eaa77&auto_redirect=0&cache_type=1&xmfcid=15e85155-2a16-4df9-9023-d7a9dfbcf215-0-9eed82220"
 if [ $? -ne 0 ]; then
     echo "下载.kodi.zip 文件失败"
     exit 1
