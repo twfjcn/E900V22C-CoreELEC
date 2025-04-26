@@ -135,7 +135,7 @@ if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
 fi
 
 echo "Downloading.kodi.zip file"
-wget -O.kodi.zip "https://183-232-114-168.pd1.cjjd19.com:30443/download-cdn.cjjd19.com/123-269/442b1a56/1814378345-0/442b1a5670c5c6e8f887319fca0eb50d/c-m6?v=5&t=1745635200&s=1745635200f760839df27ec7e5de4ae371123a5657&r=M92PFN&bzc=1&bzs=1814378345&filename=.kodi.zip&x-mf-biz-cid=3e718a66-e93e-40ea-897e-4aac3d52122a-5baabb&auto_redirect=0&cache_type=1&xmfcid=48eeac90-82cf-41d3-add1-bd05400335e8-1-9eed82220"
+wget -O.kodi.zip "https://media-gdgz-fy-person01.gd5oss.ctyunxs.cn/PERSONCLOUD/38f2960a-d1d1-4923-bb35-bff7a46ba209.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=LygTMEsrxVyOncCxu0maWHzR4mA%3D&AWSAccessKeyId=g6jU1T3TkAbPKf5ouH5d&x-amz-userLevel=7&Expires=1745686022&x-amz-limitrate=51200&x-amz-FSIZE=166985046&x-amz-UID=354906919&x-amz-UFID=624841191140035573"
 if [ $? -ne 0 ]; then
     echo "下载.kodi.zip 文件失败"
     exit 1
