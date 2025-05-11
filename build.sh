@@ -93,6 +93,17 @@ else
     exit 1
 fi
 
+# 赋予 /usr/bin/setboot 文件执行权限
+sudo chmod +x ${system_root}/usr/bin/initial
+
+# 检查权限是否设置成功
+if [ -x ${system_root}/usr/bin/setboot ]; then
+    echo "/usr/bin/initial 已成功赋予执行权限。"
+else
+    echo "赋予 /usr/bin/initial 执行权限失败。"
+    exit 1
+fi
+
 # 赋予 /usr/bin/updatecheck 文件执行权限
 sudo chmod +x ${system_root}/usr/bin/updatecheck
 
