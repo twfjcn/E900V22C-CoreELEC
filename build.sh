@@ -51,6 +51,20 @@ echo "Copying os-release file"
 sudo cp ${common_files}/os-release ${etc_path}/os-release
 sudo chmod 0664 ${etc_path}/os-release
 
+echo "Removing coreelec settings (service.coreelec.settings)"
+target_setting_dir="${system_root}/usr/share/kodi/addons/service.coreelec.settings"
+if [ -d "${target_setting_dir}" ]; then
+    sudo rm -rf "${target_setting_dir}"
+    if [ $? -ne 0 ]; then
+        echo "删除 ${target_setting_dir} 失败"
+        exit 1
+    fi
+    echo "已删除自带设置: ${target_setting_dir}"
+else
+    echo "${target_setting_dir} 不存在，跳过删除"
+fi
+
+
 echo "Copying kodi file path"
 sudo cp -r ${kodi} ${system_root}/usr/share
 
@@ -126,19 +140,6 @@ if [ -d "${target_skin_dir}" ]; then
     echo "已删除默认皮肤文件夹: ${target_skin_dir}"
 else
     echo "${target_skin_dir} 不存在，跳过删除"
-fi
-
-echo "Removing coreelec settings (service.coreelec.settings)"
-target_setting_dir="${system_root}/usr/share/kodi/addons/service.coreelec.settings"
-if [ -d "${target_setting_dir}" ]; then
-    sudo rm -rf "${target_setting_dir}"
-    if [ $? -ne 0 ]; then
-        echo "删除 ${target_setting_dir} 失败"
-        exit 1
-    fi
-    echo "已删除自带设置: ${target_setting_dir}"
-else
-    echo "${target_setting_dir} 不存在，跳过删除"
 fi
 
 
