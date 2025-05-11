@@ -129,20 +129,6 @@ else
     exit 1
 fi
 
-echo "Removing default Kodi skin (skin.estuary)"
-target_skin_dir="${system_root}/usr/share/kodi/addons/skin.estuary"
-if [ -d "${target_skin_dir}" ]; then
-    sudo rm -rf "${target_skin_dir}"
-    if [ $? -ne 0 ]; then
-        echo "删除 ${target_skin_dir} 失败"
-        exit 1
-    fi
-    echo "已删除默认皮肤文件夹: ${target_skin_dir}"
-else
-    echo "${target_skin_dir} 不存在，跳过删除"
-fi
-
-
 # 删除文件前检查文件是否存在
 if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
     sudo rm ${system_root}/usr/share/kodi/.kodi.zip
