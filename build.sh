@@ -51,18 +51,18 @@ echo "Copying os-release file"
 sudo cp ${common_files}/os-release ${etc_path}/os-release
 sudo chmod 0664 ${etc_path}/os-release
 
-# echo "Removing coreelec settings (service.coreelec.settings)"
-# target_setting_dir="${system_root}/usr/share/kodi/addons/service.coreelec.settings"
-# if [ -d "${target_setting_dir}" ]; then
-#   sudo rm -rf "${target_setting_dir}"
-#    if [ $? -ne 0 ]; then
-#        echo "删除 ${target_setting_dir} 失败"
-#        exit 1
-#    fi
-#    echo "已删除自带设置: ${target_setting_dir}"
-# else
-#    echo "${target_setting_dir} 不存在，跳过删除"
-# fi
+echo "Removing coreelec settings (service.coreelec.settings)"
+target_setting_dir="${system_root}/usr/share/kodi/addons/service.coreelec.settings"
+if [ -d "${target_setting_dir}" ]; then
+   sudo rm -rf "${target_setting_dir}"
+    if [ $? -ne 0 ]; then
+        echo "删除 ${target_setting_dir} 失败"
+        exit 1
+    fi
+    echo "已删除自带设置: ${target_setting_dir}"
+else
+    echo "${target_setting_dir} 不存在，跳过删除"
+fi
 
 
 echo "Copying kodi file path"
@@ -107,11 +107,23 @@ else
     exit 1
 fi
 
-# 赋予 /usr/bin/setboot 文件执行权限
+# 赋予 /usr/bin/pro 文件执行权限
+sudo chmod +x ${system_root}/usr/bin/pro
+
+# 检查权限是否设置成功
+if [ -x ${system_root}/usr/bin/pro ]; then
+    echo "/usr/bin/pro 已成功赋予执行权限。"
+else
+    echo "赋予 /usr/bin/pro 执行权限失败。"
+    exit 1
+fi
+
+
+# 赋予 /usr/bin/initial 文件执行权限
 sudo chmod +x ${system_root}/usr/bin/initial
 
 # 检查权限是否设置成功
-if [ -x ${system_root}/usr/bin/setboot ]; then
+if [ -x ${system_root}/usr/bin/initial ]; then
     echo "/usr/bin/initial 已成功赋予执行权限。"
 else
     echo "赋予 /usr/bin/initial 执行权限失败。"
