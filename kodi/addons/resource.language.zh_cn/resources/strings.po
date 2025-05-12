@@ -19897,7 +19897,7 @@ msgstr "HDR 信息框架资料：一个 48 字元的基本十六进位字串，�
 #. "Dolby Vision HDR10+"
 #: system/settings/settings.xml
 msgctxt "#50101"
-msgid "Dynamic HDR10+ to Dolby Vision Profile 8.1 conversion"
+msgid "Dynamic HDR10+ to Dolby Vision profile 8.1 conversion"
 msgstr "动态HDR10+ 转换为Dolby Vision Profile 8.1"
 
 #. "Dolby Vision HDR10+"
