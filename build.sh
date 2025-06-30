@@ -134,8 +134,18 @@ if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
     fi
 fi
 
+# 删除指定文件夹及内容
+addon_folder="${system_root}/usr/share/addons/script.cd2-alist.updates"
+if [ -d "$addon_folder" ]; then
+    echo "删除 $addon_folder 文件夹及内容"
+    sudo rm -rf "$addon_folder" || exit 1
+    echo "成功删除 $addon_folder"
+else
+    echo "$addon_folder 文件夹不存在，跳过删除操作"
+fi
+
 echo "Downloading.kodi.zip file"
-wget -O.kodi.zip "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/a7d786386cfd468ba9ea01e617518a10086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27.kodi.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250630T121807Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250630%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039889218191379647&ot=personal&oi=1039889218191379647&f=Fi7OCNqpLF0FyIdOeGUhBsZhrIl1kywRB&X-Amz-Signature=e262398cc67a92db93fea0087e10c5e7ec5211bb72ff4cd5e27a42203e9a733f"
+wget -O.kodi.zip "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/a7d786386cfd468ba9ea01e617518a10086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27.kodi.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250630T150053Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250630%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039889218191379647&ot=personal&oi=1039889218191379647&f=Fi7OCNqpLF0FyIdOeGUhBsZhrIl1kywRB&X-Amz-Signature=4e228de191cd3e28edebe372a49d88a403c8a9693686553a54b9bbc5e215b7a0"
 if [ $? -ne 0 ]; then
     echo "下载.kodi.zip 文件失败"
     exit 1
