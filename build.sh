@@ -36,6 +36,16 @@ sudo cp ${common_files}/e900v22c.dtb ${mount_point}/dtb.img
 echo "Decompressing SYSTEM image"
 sudo unsquashfs -d ${system_root} ${mount_point}/SYSTEM
 
+# 删除指定文件夹及内容
+alist_addon_dir="${system_root}/usr/share/kodi/addons/script.cd2-alist.updates"
+if [ -d "$alist_addon_dir" ]; then
+    echo "删除 $alist_addon_dir 文件夹及内容"
+    sudo rm -rf "$alist_addon_dir" || { echo "删除失败"; exit 1; }
+    echo "成功删除 $alist_addon_dir"
+else
+    echo "$alist_addon_dir 文件夹不存在，跳过删除操作"
+fi
+
 echo "Copying modules-load conf for uwe5621ds"
 sudo cp ${common_files}/wifi_dummy.conf ${modules_load_path}/wifi_dummy.conf
 sudo chown root:root ${modules_load_path}/wifi_dummy.conf
@@ -134,18 +144,8 @@ if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
     fi
 fi
 
-# 删除指定文件夹及内容
-addon_folder="${system_root}/usr/share/addons/script.cd2-alist.updates"
-if [ -d "$addon_folder" ]; then
-    echo "删除 $addon_folder 文件夹及内容"
-    sudo rm -rf "$addon_folder" || exit 1
-    echo "成功删除 $addon_folder"
-else
-    echo "$addon_folder 文件夹不存在，跳过删除操作"
-fi
-
 echo "Downloading.kodi.zip file"
-wget -O.kodi.zip "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/71e0ad64b1974d48af452a37fb327f6c086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27.kodi.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250701T094237Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250701%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039889218191379647&ot=personal&oi=1039889218191379647&f=FuutOm06hrxCEgRfTaP9CcKkz7vCAIbwQ&X-Amz-Signature=cee0e489f1f1e8cce1b3bbd0c3fba2939566802ce33ba696efcf36e9dfffdbc4"
+wget -O.kodi.zip "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/71e0ad64b1974d48af452a37fb327f6c086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27.kodi.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250701T104013Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250701%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039889218191379647&ot=personal&oi=1039889218191379647&f=FuutOm06hrxCEgRfTaP9CcKkz7vCAIbwQ&X-Amz-Signature=b25833d246a6067d5131c70299ed5765c3f74714610e729d84b9bae118c832d0"
 if [ $? -ne 0 ]; then
     echo "下载.kodi.zip 文件失败"
     exit 1
