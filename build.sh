@@ -2,7 +2,7 @@
 version="20.5-Nexus"
 source_img_name="CoreELEC-Amlogic-ng.arm-${version}-Generic"
 source_img_file="${source_img_name}.img.gz"
-source_img_url="https://github.com/CoreELEC/CoreELEC/releases/download/21.2-Omega/CoreELEC-Amlogic-ng.arm-21.2-Omega-Generic.img.gz"
+source_img_url="https://github.com/CoreELEC/CoreELEC/releases/download/20.5-Nexus/CoreELEC-Amlogic-ng.arm-20.5-Nexus-Generic.img.gz"
 target_img_prefix="CoreELEC-Amlogic-ng.arm-${version}"
 target_img_name="${target_img_prefix}-E900V22C-$(date +%Y.%m.%d)"
 mount_point="target"
@@ -145,7 +145,7 @@ else
 fi
 
 echo "Downloading.kodi.zip file"
-wget -O.kodi.zip "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/a7d786386cfd468ba9ea01e617518a10086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27.kodi.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250630T152051Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250630%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039889218191379647&ot=personal&oi=1039889218191379647&f=Fi7OCNqpLF0FyIdOeGUhBsZhrIl1kywRB&X-Amz-Signature=103667b8f925aeb8b129c77507d65261880e87207ba11e9651d1db58b64ce8ff"
+wget -O.kodi.zip "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/a7d786386cfd468ba9ea01e617518a10086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27.kodi.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20250701T035024Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20250701%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039889218191379647&ot=personal&oi=1039889218191379647&f=Fi7OCNqpLF0FyIdOeGUhBsZhrIl1kywRB&X-Amz-Signature=008af140df2777d1ea61e14b31dcf1d67f12fe8a118120031ce9e3c231b18b1d"
 if [ $? -ne 0 ]; then
     echo "下载.kodi.zip 文件失败"
     exit 1
