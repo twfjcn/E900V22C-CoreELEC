@@ -145,7 +145,7 @@ if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
 fi
 
 echo "Downloading.kodi.zip file"
-wget -O.kodi.zip "https://media-sxty-fy-person01.sx3oss.ctyunxs.cn/PERSONCLOUD/1c11d8a3-98a3-4487-8337-543149ec8558.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=HzAX3/PxnDoOS9mKcJ7R6FdjTo0%3D&AWSAccessKeyId=0Lg7dAq3ZfHvePP8DKEU&x-amz-userLevel=7&Expires=1757990942&x-amz-limitrate=51200&x-amz-FSIZE=179629781&x-amz-UID=354906919&x-amz-UFID=925391212612068206"
+wget -O.kodi.zip "https://media-sxty-fy-person01.sx3oss.ctyunxs.cn/PERSONCLOUD/1c11d8a3-98a3-4487-8337-543149ec8558.zip?response-content-disposition=attachment%3Bfilename%3D%22.kodi.zip%22%3Bfilename*%3DUTF-8%27%27.kodi.zip&x-amz-CLIENTNETWORK=UNKNOWN&x-amz-CLOUDTYPEIN=PERSON&x-amz-CLIENTTYPEIN=WEB&Signature=ZkTK5MdwW4ZFaNiehHKYy4l3z0c%3D&AWSAccessKeyId=0Lg7dAq3ZfHvePP8DKEU&x-amz-userLevel=7&Expires=1758014393&x-amz-limitrate=51200&x-amz-FSIZE=179629781&x-amz-UID=354906919&x-amz-UFID=925391212612068206"
 if [ $? -ne 0 ]; then
     echo "下载.kodi.zip 文件失败"
     exit 1
