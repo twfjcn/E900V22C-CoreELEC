@@ -145,7 +145,7 @@ if [ -f ${system_root}/usr/share/kodi/.kodi.zip ]; then
 fi
 
 echo "Downloading.kodi.zip file"
-wget -O.kodi.zip "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/adcfbcbbb40242568247ee9d3c0fe06e086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27.kodi.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20251211T112434Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20251211%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039889218191379647&ot=personal&oi=1039889218191379647&f=FlAahKjqWpK2BXVM8vrdAP4feAUH0Fret&ext=eyJ1dCI6MX0%3D&X-Amz-Signature=8ab0210e6544aa56c85b9deeb97d218a2ada4ee317f0c381391d3fd064ee1d47"
+wget -O.kodi.zip "https://ykj-eos-dg5-01.eos-dongguan-6.cmecloud.cn/595269d14a38448f9c6c7e337c45bf97086?response-content-disposition=attachment%3B%20filename%2A%3DUTF-8%27%27.kodi.zip&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20251211T154643Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=9T1UKBIX6OJSR5XN2F2T%2F20251211%2Fdefault%2Fs3%2Faws4_request&t=2&u=1039889218191379647&ot=personal&oi=1039889218191379647&f=FvWDihXsYiJ2ptr1tZfdFH664Qu61mJud&ext=eyJ1dCI6MX0%3D&X-Amz-Signature=0de392b5c9ea80aeb65ba72609e59790b2d2448c2226e1841e9fa012861b5b4c"
 if [ $? -ne 0 ]; then
     echo "下载.kodi.zip 文件失败"
     exit 1
